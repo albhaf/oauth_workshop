@@ -1,6 +1,9 @@
 name: Check
 
 on:
+  push:
+    branches:
+      - master
   pull_request:
 
 jobs:
@@ -17,6 +20,7 @@ jobs:
         with:
           java-version: '11'
           distribution: 'zulu'
+          cache: 'gradle'
       - name: Lint with KtLint
         run: ./gradlew ktlintCheck
       - name: Run tests
